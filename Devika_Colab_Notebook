@@ -1,0 +1,205 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/FunkusBangru/Access-Of-Devika-Ai-Using-Colab/blob/main/Devika_Colab_Notebook\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Welcome to Devika Setup Guide!\n",
+        "\n",
+        "This notebook will guide you through setting up Devika, an AI software engineer, on your system.\n",
+        "\n",
+        "Please follow each step carefully.\n",
+        "\n",
+        "Step 1: Installing Required Packages\n",
+        "We'll start by installing the necessary packages for Devika."
+      ],
+      "metadata": {
+        "id": "m6uwTqL8zjyr"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "!pip install playwright uv"
+      ],
+      "metadata": {
+        "id": "BgP_RgPwzloF"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Step 2: Cloning Devika Repository\n",
+        "Next, we'll clone the Devika repository from GitHub."
+      ],
+      "metadata": {
+        "id": "59YIrinEzqFD"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "!git clone https://github.com/stitionai/devika.git %cd devika"
+      ],
+      "metadata": {
+        "id": "M4osJGKyzxGe"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Step 3: Installing Dependencies\n",
+        "Now, let's install all the required dependencies for Devika"
+      ],
+      "metadata": {
+        "id": "ZGRG2vo40D8x"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "!pip install -r requirements.txt !playwright install --with-deps"
+      ],
+      "metadata": {
+        "id": "Xr4ZGeM40HlO"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Step 4: Configuring Devika\n",
+        "We need to set up some configurations for Devika, including API keys and model settings."
+      ],
+      "metadata": {
+        "id": "G_gkuJZ80LdH"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Replace the placeholders with your actual API keys and endpoints\n",
+        "\n",
+        "Replace placeholder values with actual API endpoints and keys. Adjust parameters like 'MODEL_NAME' if needed. Save changes. Follow instructions provided by Devika for setup or configuration."
+      ],
+      "metadata": {
+        "id": "TBWPPQDp0SeU"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "\n",
+        "# Set up Devika configurations\n",
+        "configurations = {\n",
+        "    'ENDPOINT_OΡΕΝΑΙ': 'YOUR_OΡΕΝΑΙ_ENDPOINT',\n",
+        "    'OPENAI_ENDPOINT': 'YOUR_OPENAI_ENDPOINT',\n",
+        "    'ΟΡΕΝΑΙ_ΑΡΙ_ΚΕΥ': 'YOUR_OΡΕΝΑΙ_API_KEY',\n",
+        "    'CLAUDE_API_KEY': 'YOUR_CLAUDE_API_KEY',\n",
+        "    'BING_API_KEY': 'YOUR_BING_API_KEY',\n",
+        "    'AZURE_API_KEY': 'YOUR_AZURE_API_KEY',\n",
+        "    'AZURE_ENDPOINT': 'YOUR_AZURE_ENDPOINT',\n",
+        "    'OPENROUTER_API_KEY': 'YOUR_OPENROUTER_API_KEY',\n",
+        "    'MODEL_NAME': 'gpt-3.5-turbo',\n",
+        "    'MAX_TOKENS': 8192,\n",
+        "    # Remove token values and gpt-pilot\n",
+        "}\n",
+        "\n",
+        "# Write configurations to config.toml\n",
+        "with open('config.toml', 'a') as f:\n",
+        "    f.write('\\n')  # Add a new line before appending configurations\n",
+        "    for key, value in configurations.items():\n",
+        "        if isinstance(value, str):\n",
+        "            f.write(f'{key} = \"{value}\"\\n')\n",
+        "        else:\n",
+        "            f.write(f'{key} = {value}\\n')"
+      ],
+      "metadata": {
+        "id": "3i-6zp3n1LU_"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Step 5: Starting Devika Server\n",
+        "\n",
+        "We'll now start the Devika server"
+      ],
+      "metadata": {
+        "id": "gxFQXaFA1Txu"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "\n",
+        "import subprocess\n",
+        "\n",
+        "# Start Devika server\n",
+        "devika_server_process = subprocess.Popen(['python', 'devika.py'])"
+      ],
+      "metadata": {
+        "id": "Llb3sxrj2hpV"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Step 6: Running UI Server with Improved Interface\n",
+        "Finally, we'll run the UI server with the improved user interface."
+      ],
+      "metadata": {
+        "id": "ce5ruu1F2s7m"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "%cd ui\n",
+        "!bun install\n",
+        "!bun run dev"
+      ],
+      "metadata": {
+        "id": "fCtWTC7Q2-3i"
+      },
+      "execution_count": null,
+      "outputs": []
+    }
+  ],
+  "metadata": {
+    "accelerator": "GPU",
+    "colab": {
+      "gpuType": "T4",
+      "provenance": [],
+      "authorship_tag": "ABX9TyO4fXSxWIJPkRMDABrrpyTg",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "display_name": "Python 3",
+      "name": "python3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}
